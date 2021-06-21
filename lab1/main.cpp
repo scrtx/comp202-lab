@@ -2,13 +2,13 @@
 #include "LinkedList.h"
 
 int main(){
-    linkedList list;
+    LinkedList list;
     list.addToHead(5);
     list.addToHead(8);
+    list.traverse();
     list.addToTail(69);
-    list.traverse(' ');
-    list.addToHead(10);
-    list.addToTail(12);
-    list.traverse(' ');
+    list.traverse();
+    list.removeFromHead();
+    list.traverse();
     return 0;
 }

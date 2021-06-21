@@ -1,38 +1,42 @@
 #include<iostream>
-#include"Linkedlist.h"
+#include"LinkedList.h"
 
-bool linkedList::isEmpty(){
+bool LinkedList::isEmpty(){
     return HEAD==nullptr && TAIL==nullptr;
 }
 
-void linkedList::addToHead(int data){
+void LinkedList::addToHead(int data){
     Node *newNode = new Node(data,HEAD);
     //newNode->info=data;
     //newNode->next=HEAD;
+    
     HEAD=newNode;
     if(TAIL==nullptr){
         TAIL=HEAD;
     }
 }
 
-void linkedList::addToTail(int data){
+void LinkedList::addToTail(int data){
     Node *newNode=new Node(data,nullptr);
     //newNode->info=data;
     //newNode->next=nullptr;
+    
     TAIL->next=newNode;
     TAIL=TAIL->next;
 }
 
-void linkedList::add(int data, Node *predecessor){
+void LinkedList::add(int data, Node *predecessor){
     Node *newNode=new Node(data,predecessor->next);
     //newNode->info=data;
     //newNode->next=predecessor->next;
+    
     predecessor->next=newNode;
 }
 
-void linkedList::removeFromHead(){
+int LinkedList::removeFromHead(){
     if(!this->isEmpty()){
         Node *nodeToDelete=HEAD;
+        int element=nodeToDelete->info;
         this->HEAD = nodeToDelete;
         
         if(HEAD==nullptr){
@@ -40,10 +44,14 @@ void linkedList::removeFromHead(){
         }
 
         delete nodeToDelete;
-    } 
+        return element;
+    }
+    else{
+        return 0;
+    }
 }
 
-void linkedList::remove(int data){
+void LinkedList::remove(int data){
     Node *temp=nullptr;
     Node*prev=nullptr;
     
@@ -77,7 +85,7 @@ void linkedList::remove(int data){
     }
 }
 
-bool linkedList::retrieve(int data,Node *outputptr){
+bool LinkedList::retrieve(int data,Node *outputptr){
     Node *p=HEAD;
     while (p!=nullptr && p->info!=data){
         p=p->next;
@@ -92,7 +100,7 @@ bool linkedList::retrieve(int data,Node *outputptr){
     } 
 }
 
-/*bool linkedList::search(int data){
+/*bool LinkedList::search(int data){
     Node*p=HEAD;
     if(p!=nullptr && data==p->info){
         
@@ -125,9 +133,9 @@ bool linkedList::retrieve(int data,Node *outputptr){
 }
 */
 
-void linkedList::traverse(char separator){
+void LinkedList::traverse(char separator){
     if(isEmpty()){
-        std::cout<<"List is empty."<<std::endl;
+        std::cout<<"List is empty.\n";
     }
     else{
         Node *temp=HEAD;
@@ -137,4 +145,12 @@ void linkedList::traverse(char separator){
         }
         std::cout<<std::endl;
     }
+}
+
+int LinkedList::getHead(){
+    return HEAD->info;
+}
+
+int LinkedList::getTail(){
+    return TAIL->info;
 }
