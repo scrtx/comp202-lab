@@ -34,10 +34,10 @@ void LinkedList::add(int data, Node *predecessor){
 }
 
 int LinkedList::removeFromHead(){
-    if(!this->isEmpty()){
+    if(!isEmpty()){
         Node *nodeToDelete=HEAD;
         int element=nodeToDelete->info;
-        this->HEAD = nodeToDelete;
+        HEAD = nodeToDelete->next;
         
         if(HEAD==nullptr){
             TAIL=nullptr;
@@ -100,50 +100,27 @@ bool LinkedList::retrieve(int data,Node *outputptr){
     } 
 }
 
-/*bool LinkedList::search(int data){
+bool LinkedList::search(int data){
     Node*p=HEAD;
     if(p!=nullptr && data==p->info){
-        
+        return true;
     }
     else{
-
-    }
-}*/
-//search number
-/*
-    Node* searchnumber = nullptr;
-    temp = head;
-    current = head;
-
-    while (current != NULL && current->number != searchNum)
-    {
-        temp = current;
-        current = current->next;
-    }
-    if (current != NULL)
-    {
-        searchnumber = current;
-        current = current->next;
-        std::cout << "-" << searchnumber << " Found";
-    }
-    else
-    {
-        std::cout << "N/A";
+        return false;
     }
 }
-*/
 
 void LinkedList::traverse(char separator){
-    if(isEmpty()){
-        std::cout<<"List is empty.\n";
-    }
-    else{
+    if(!isEmpty()){
         Node *temp=HEAD;
         while(temp!=nullptr){
             std::cout<<temp->info<<separator;
             temp=temp->next;
         }
         std::cout<<std::endl;
+    }
+    else{
+        std::cout<<"List is empty.\n";
     }
 }
 
