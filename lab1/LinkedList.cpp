@@ -22,13 +22,17 @@ void LinkedList::addToHead(int data){
 void LinkedList::addToTail(int data){
     Node *newNode=new Node(data,nullptr);
     
+    if(isEmpty()){
+        HEAD = newNode;
+        TAIL = newNode;
+    }
+
     TAIL->next=newNode;
     TAIL=TAIL->next;
 }
 
 void LinkedList::add(int data, Node *predecessor){
     Node *newNode=new Node(data,predecessor->next);
-    
     predecessor->next=newNode;
 }
 
@@ -51,62 +55,63 @@ int LinkedList::removeFromHead(){
 }
 
 void LinkedList::remove(int data){
-    Node *temp=nullptr;
-    Node*prev=nullptr;
-    
     if (!this->isEmpty()){
-        if(HEAD->info==data){
+        if (HEAD->info == data){
             removeFromHead();
         }
-    }
-    else{
-        temp=HEAD->next;
-        prev=HEAD;
-        
-        while(temp!=nullptr){
-            if(temp->info==data){
-                break;
+        else{
+            Node *temp = new Node();
+            temp = HEAD->next;
+            Node *prev = new Node();
+            prev = HEAD;
+
+            while (temp != nullptr){
+                if (temp->info == data){
+                    break;
+                }
+                else{
+                    prev = prev->next;
+                    temp = temp->next;
+                }
             }
-            else{
-                prev=prev->next;
-                temp=temp->next;
+
+            if (temp != nullptr){
+                prev->next = temp->next;
+                delete temp;
+
+                if (prev->next == nullptr){
+                    TAIL = prev;
+                }
             }
-        }
-        
-        if (temp!=nullptr){
-            prev->next=temp->next;
-            delete temp;
-            
-            if(prev->next==nullptr){
-                TAIL=prev;
+
+            if (temp == nullptr){
+                std::cout << "Not found" << std::endl;
             }
         }
     }
 }
 
-bool LinkedList::retrieve(int data,Node *outputptr){
+Node* LinkedList::retrieve(int data,Node *outputptr){
     Node *p=HEAD;
-    while (p!=nullptr && p->info!=data){
+    while (p!=nullptr){
+       if(p->info==data){
+            outputptr=p;
+            return outputptr;
+        }
         p=p->next;
     }
-
-    if(p==nullptr){
-        return false;
-    }
-    else{
-        outputptr=p;
-        return true;
-    } 
+    return nullptr;
 }
 
 bool LinkedList::search(int data){
     Node*p=HEAD;
-    if(p!=nullptr && data==p->info){
-        return true;
+    while(p!=nullptr){
+        if(p->info==data){
+            return true;
+        }
+        p=p->next;
     }
-    else{
-        return false;
-    }
+    return false;
 }
 
 void LinkedList::traverse(char separator){

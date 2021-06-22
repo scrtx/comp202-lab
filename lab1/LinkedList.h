@@ -19,7 +19,7 @@ class LinkedList{
         void add(int data, Node *predecessor);
         int removeFromHead();
         void remove(int data);
-        bool retrieve(int data,Node *outputptr);
+        Node* retrieve(int data,Node *outputptr);
         bool search(int data);
         void traverse(char separator=' ');
         int getHead();

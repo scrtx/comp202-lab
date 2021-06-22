@@ -12,11 +12,12 @@ int main(){
         std::cout<<slist.pop()<<","<<slist.pop()<<std::endl;
     
         qlist.enqueue(1);
-        qlist.enqueue(2);
+        qlist.enqueue(22);
         qlist.enqueue(3);
-        std::cout<<qlist.dequeue()<<","<<qlist.dequeue()<<std::endl;
+        qlist.enqueue(24);
         std::cout<<"Front : "<<qlist.front()<<std::endl;
-        std::cout<<"Rear : "<<qlist.rear();
-
+        std::cout<<"Rear : "<<qlist.rear()<<std::endl;
+        std::cout<<qlist.dequeue()<<","<<qlist.dequeue()<<std::endl;
+        
     return 0;
 }
