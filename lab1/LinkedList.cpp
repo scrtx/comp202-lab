@@ -1,15 +1,18 @@
 #include<iostream>
 #include"LinkedList.h"
 
+LinkedList::LinkedList(){
+    HEAD=nullptr;
+    TAIL=nullptr;
+}
+
 bool LinkedList::isEmpty(){
     return HEAD==nullptr && TAIL==nullptr;
 }
 
 void LinkedList::addToHead(int data){
     Node *newNode = new Node(data,HEAD);
-    //newNode->info=data;
-    //newNode->next=HEAD;
-    
+
     HEAD=newNode;
     if(TAIL==nullptr){
         TAIL=HEAD;
@@ -18,8 +21,6 @@ void LinkedList::addToHead(int data){
 
 void LinkedList::addToTail(int data){
     Node *newNode=new Node(data,nullptr);
-    //newNode->info=data;
-    //newNode->next=nullptr;
     
     TAIL->next=newNode;
     TAIL=TAIL->next;
@@ -27,8 +28,6 @@ void LinkedList::addToTail(int data){
 
 void LinkedList::add(int data, Node *predecessor){
     Node *newNode=new Node(data,predecessor->next);
-    //newNode->info=data;
-    //newNode->next=predecessor->next;
     
     predecessor->next=newNode;
 }

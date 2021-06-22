@@ -13,7 +13,7 @@ class LinkedListStack : public Stack{
         LinkedList stacklist;
     public:
         virtual bool isEmpty(){
-            ;
+            return stacklist.isEmpty();
         }
         
         virtual void push(int data){

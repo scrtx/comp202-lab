@@ -12,6 +12,7 @@ class Node{
 
 class LinkedList{
     public:
+        LinkedList();
         bool isEmpty();
         void addToHead(int data);
         void addToTail(int data);

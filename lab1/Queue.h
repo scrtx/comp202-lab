@@ -14,23 +14,19 @@ class LinkedListQueue : public Queue{
         LinkedList queuelist;
         
     public:
-        void enqueue(int data){
+        virtual void enqueue(int data){
             queuelist.addToTail(data);
         }
         
-        int dequeue(){
+        virtual int dequeue(){
             return queuelist.removeFromHead();
         }
         
-        int front(){
+        virtual int front(){
             return queuelist.getHead();
         }
         
-        int rear(){
+        virtual int rear(){
             return queuelist.getTail();
-        }
-        
-        void traverse(){
-            queuelist.traverse();
         }
 };
