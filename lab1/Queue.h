@@ -29,4 +29,8 @@ class LinkedListQueue : public Queue{
         virtual int rear(){
             return queuelist.getTail();
         }
+
+        void traverse(){
+            queuelist.traverse();
+        }
 };
