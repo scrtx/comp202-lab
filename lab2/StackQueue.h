@@ -1,3 +1,6 @@
+#ifndef STACKQUEUE_H
+#define STACKQUEUE_H
+
 class Stack{
     public:
         virtual int push(int element)=0;
@@ -14,3 +17,5 @@ class Queue{
         bool isFull();
         void dequeue();
 };
+
+#endif
