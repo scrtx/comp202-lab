@@ -1,15 +1,15 @@
-#ifndef STACKQUEUE_H
-#define STACKQUEUE_H
+#ifndef STACk_H
+#define STACK_H
 
 class Stack{
     private:
         int *data;
-        int topIndex=-1;
+        int topIndex;
         int maxStackSize;
     public:
-        Stack(int maxStackSize);
-        virtual int push(int element)=0;
-        virtual void pop()=0;
+        Stack(int size);
+        virtual void push(int element)=0;
+        virtual int pop()=0;
         virtual bool isEmpty()=0;
         virtual bool isFull()=0;
         virtual int top()=0;
